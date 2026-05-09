@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation | FUKAI Japanese Cuisine</title>
+    <link rel="stylesheet" href="css/stl.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&display=swap" rel="stylesheet">
+    <script src="js/menu.js" defer></script>
+</head>
+
+<body>
+
+    <div class="lang-switch">
+        <a href="booking.html">日本語</a>
+    </div>
+
+    <header class="header-area">
+        <header class="header-area">
+            <div class="header-inner">
+                <h1 class="logo">
+                    <a href="index.html">
+                        <!-- テキストを消してロゴ画像を入れる -->
+                        <img src="img/Copilot_20260509_124230.png" alt="深井">
+                    </a>
+
+                </h1>
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index_en.html">Home</a></li>
+                        <li><a href="fukai_en.html">About</a></li>
+                        <li><a href="food_en.html">Menu</a></li>
+                        <li><a href="access_en.html">Access</a></li>
+                        <li><a href="booking_en.html" class="current">Reservation</a></li>
+                        <li><a href="contact_en.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <nav class="side-menu">
+            <ul>
+                <li><a href="index_en.html">Home</a></li>
+                <li><a href="fukai_en.html">About</a></li>
+                <li><a href="food_en.html">Menu</a></li>
+                <li><a href="access_en.html">Access</a></li>
+                <li><a href="booking_en.html" class="current">Reservation</a></li>
+                <li><a href="contact_en.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="page-title">
+                <span class="en">Reservation</span>
+                <h1>Book a Table</h1>
+            </section>
+
+            <section class="booking-section reveal">
+                <div class="booking-container">
+                    <div class="booking-intro">
+                        <p>We accept reservations via the form below or by telephone.<br>
+                            For same-day bookings or groups of 8 or more,<br>
+                            please contact us directly by phone.</p>
+                        <p class="tel-number">TEL：<a href="tel:000-0000-0000">000-0000-0000</a></p>
+                        <p class="note">*Closed on Tuesdays.</p>
+                    </div>
+
+                    <form id="reservation-form-en" class="reserve-form">
+                        <div class="form-group">
+                            <label for="name">Name <span class="required">Required</span></label>
+                            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tel">Phone Number <span class="required">Required</span></label>
+                            <input type="tel" id="tel" name="tel" placeholder="+81-00-0000-0000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">Required</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@fukai.com" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date-en">Date <span class="required">Required</span></label>
+                                <input type="date" id="date-en" name="date" required>
+                                <p id="date-error-en" class="error-msg"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="time-en">Time <span class="required">Required</span></label>
+                                <select id="time-en" name="time" required>
+                                    <option value="">Select Time</option>
+                                    <optgroup label="Lunch">
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="12:30">12:30 PM</option>
+                                        <option value="13:00">1:00 PM</option>
+                                    </optgroup>
+                                    <optgroup label="Dinner">
+                                        <option value="18:00">6:00 PM</option>
+                                        <option value="18:30">6:30 PM</option>
+                                        <option value="19:00">7:00 PM</option>
+                                        <option value="19:30">7:30 PM</option>
+                                        <option value="20:00">8:00 PM</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">Course <span class="required">Required</span></label>
+                            <select id="course" name="course" required>
+                                <option value="">Select a Course</option>
+                                <option value="lunch-hatsune">Lunch "Hatsune" (8,800 JPY)</option>
+                                <option value="lunch-irodori">Special "Irodori" (5,500 JPY)</option>
+                                <option value="dinner-fukai">Kaiseki "FUKAI" (18,000 JPY)</option>
+                                <option value="dinner-kiwami">Kiwami Kaiseki (25,000 JPY)</option>
+                                <option value="other">Table Only / Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Dietary Requirements / Special Requests</label>
+                            <textarea id="message" name="message" rows="4"
+                                placeholder="Any allergies or preferences?"></textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">Confirm Reservation</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-area">
+            <div class="footer-inner">
+                <p class="footer-logo">FUKAI</p>
+                <small>© 2026 FUKAI All rights reserved.</small>
+            </div>
+        </footer>
+
+</body>
+
+</html>

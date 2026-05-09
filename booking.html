@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご予約 | 日本料理 深井</title>
+    <link rel="stylesheet" href="css/stl.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&display=swap" rel="stylesheet">
+    <script src="js/menu.js" defer></script>
+</head>
+
+<body>
+
+    <div class="lang-switch">
+        <a href="booking_en.html">English</a>
+    </div>
+
+    <header class="header-area">
+        <header class="header-area">
+            <div class="header-inner">
+                <h1 class="logo">
+                    <a href="index.html">
+                        <!-- テキストを消してロゴ画像を入れる -->
+                        <img src="img/Copilot_20260509_124230.png" alt="深井">
+                    </a>
+
+                </h1>
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="fukai.html">深井について</a></li>
+                        <li><a href="food.html">お料理</a></li>
+                        <li><a href="access.html">アクセス</a></li>
+                        <li><a href="booking.html" class="current">ご予約</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <nav class="side-menu">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="fukai.html">深井について</a></li>
+                <li><a href="food.html">お料理</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="booking.html" class="current">ご予約</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="page-title">
+                <span class="en">Reservation</span>
+                <h1>ご予約</h1>
+            </section>
+
+            <section class="booking-section reveal">
+                <div class="booking-container">
+                    <div class="booking-intro">
+                        <p>ご予約は、お電話または以下のフォームより承っております。<br>
+                            当日のご予約、および8名様以上の団体様につきましては、<br>
+                            お電話にて直接お問い合わせください。</p>
+                        <p class="tel-number">TEL：<a href="tel:000-0000-0000">000-0000-0000</a></p>
+                        <p class="note">※火曜日は定休日となります。</p>
+                    </div>
+
+                    <form id="reservation-form" class="reserve-form">
+                        <div class="form-group">
+                            <label for="name">お名前 <span class="required">必須</span></label>
+                            <input type="text" id="name" name="name" placeholder="姓名 太郎" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tel">電話番号 <span class="required">必須</span></label>
+                            <input type="tel" id="tel" name="tel" placeholder="09012345678" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">メールアドレス <span class="required">必須</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@fukai.com" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">ご来店日 <span class="required">必須</span></label>
+                                <input type="date" id="date" name="date" required>
+                                <p id="date-error" class="error-msg"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">ご来店時間 <span class="required">必須</span></label>
+                                <select id="time" name="time" required>
+                                    <option value="">選択してください</option>
+                                    <optgroup label="昼の部">
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                    </optgroup>
+                                    <optgroup label="夜の部">
+                                        <option value="18:00">18:00</option>
+                                        <option value="18:30">18:30</option>
+                                        <option value="19:00">19:00</option>
+                                        <option value="19:30">19:30</option>
+                                        <option value="20:00">20:00</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">ご希望のコース <span class="required">必須</span></label>
+                            <select id="course" name="course" required>
+                                <option value="">選択してください</option>
+                                <option value="lunch-hatsune">昼会席「初音」（8,800円）</option>
+                                <option value="lunch-irodori">限定「彩り御膳」（5,500円）</option>
+                                <option value="dinner-fukai">懐石「深井」（18,000円）</option>
+                                <option value="dinner-kiwami">極み会席（25,000円）</option>
+                                <option value="other">席のみ予約・その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">アレルギー・苦手な食材、備考等</label>
+                            <textarea id="message" name="message" rows="4" placeholder="（例）海老のアレルギーがあります。"></textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">予約内容を確認する</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-area">
+            <div class="footer-inner">
+                <p class="footer-logo">深井</p>
+                <small>© 2026 FUKAI All rights reserved.</small>
+            </div>
+        </footer>
+
+</body>
+
+</html>

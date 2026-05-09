@@ -1,0 +1,732 @@
+@charset "utf-8";
+
+/* -------------------------------------------------
+   Base Settings
+------------------------------------------------- */
+body {
+    font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    background: #111;
+    /* 深みのある黒 */
+    color: #eee;
+    /* 目に優しい白 */
+    line-height: 2.2;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* -------------------------------------------------
+   Header & Navigation (Z-index 整理済み)
+------------------------------------------------- */
+.header-area {
+    background-color: rgba(17, 17, 17, 0.95);
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* ヘッダーの基本の高さ */
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+/* ロゴエリアの調整 */
+.logo {
+    margin: 0;
+    line-height: 0; /* 画像の下にできる隙間を解消 */
+}
+
+.logo a {
+    display: block;
+    padding: 5px 0; /* ロゴの上下に少し余裕を持たせる */
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover {
+    opacity: 0.7; /* ホバー時に少し透明にしてクリックできる感を出します */
+}
+
+.logo img {
+    height: 90px;    /* ロゴの高さを指定（ヘッダーの高さに合わせて調整してください） */
+    width: auto;     /* 横幅は自動計算して比率を維持 */
+    display: block;
+    /* 白い背景がある画像の場合、背景に馴染ませるために以下を追加しても良いです */
+    /* filter: brightness(1.2); 背景が暗いので、ロゴが黒い場合は白抜きに加工するか検討が必要です */
+}
+
+/* スマホ時のロゴサイズ調整 */
+@media screen and (max-width: 768px) {
+    .logo img {
+        height: 90px; /* スマホでは少し小さくしてバランスを取ります */
+    }
+}
+
+.nav-menu ul {
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 30px;
+}
+
+.nav-menu a {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.nav-menu a:hover,
+.nav-menu a.current {
+    color: #c8a96a;
+}
+
+/* -------------------------------------------------
+   Hamburger Menu (Z-index 整理済み)
+------------------------------------------------- */
+.hamburger {
+    display: none;
+    /* PCでは非表示 */
+    position: relative;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 1200;
+    /* サイドメニュー(1100)よりも上！ */
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #c8a96a;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 11px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 22px;
+}
+
+/* active時の三本線アニメーション */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(11px) rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(45deg);
+}
+
+/* -------------------------------------------------
+   Side Menu (Mobile) (Z-index 整理済み)
+------------------------------------------------- */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    z-index: 1100;
+    /* ヘッダー(1000)より上で、ハンバーガー(1200)より下！ */
+    transition: right 0.4s ease;
+    padding-top: 100px;
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+.side-menu ul li {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 10px;
+}
+
+.side-menu a {
+    font-size: 18px;
+    display: block;
+}
+
+.side-menu a.current {
+    color: #c8a96a;
+    border-left: 3px solid #c8a96a;
+    padding-left: 15px;
+}
+
+/* -------------------------------------------------
+   Common & Animations
+------------------------------------------------- */
+.page-title {
+    text-align: center;
+    padding: 100px 20px 60px;
+}
+
+.page-title .en {
+    display: block;
+    font-size: 12px;
+    color: #c8a96a;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.page-title h1 {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin: 0;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -------------------------------------------------
+   Top Page Styles
+------------------------------------------------- */
+.main-visual {
+    width: 100%;
+    height: 100vh; /* 画面いっぱいに表示する場合 */
+    /* 背景画像の設定 */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 5)), 
+                url('../img/Copilot_20260509_144506.png') no-repeat center center / cover;
+    
+    /* 文字を中央に配置するための設定 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mv-text {
+    text-align: left; /* 左揃えの指定を維持 */
+    z-index: 1;      /* 画像より前に出す */
+}
+
+.catch {
+    color: #fff;
+    font-size: 2.5rem;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字の視認性をさらに上げる影 */
+}
+
+.catch {
+    font-size: clamp(24px, 5vw, 40px);
+    line-height: 1.8;
+    letter-spacing: 0.4em;
+    text-align: center;
+    font-weight: 300;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title .en {
+    display: block;
+    font-size: 12px;
+    color: #c8a96a;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.section-title h2 {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin: 0;
+}
+
+.concept-area {
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.concept-text {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.btn {
+    display: inline-block;
+    border: 1px solid #c8a96a;
+    color: #c8a96a;
+    padding: 12px 40px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+}
+
+.btn:hover {
+    background: #c8a96a;
+    color: #111;
+}
+
+.food-preview {
+    padding: 100px 20px;
+    background: #1a1a1a;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* これまでの .img-placeholder を以下に書き換える */
+.img-placeholder {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 15px;
+    overflow: hidden; /* 枠からはみ出した画像を隠す */
+    background: #111; /* 画像が読み込まれる前の背景色 */
+}
+
+/* 以下の画像用の設定を新しく追加する */
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像の比率を保ったまま、枠いっぱいにトリミングする魔法のコード */
+    vertical-align: bottom; /* 画像の下にできる不要な隙間を消す */
+    transition: transform 0.5s ease; /* （おまけ）後でホバー時の拡大などを入れたくなった時用 */
+}
+
+.food-item p {
+    text-align: center;
+    font-size: 14px;
+}
+/* 「深井について」の店舗画像用設定 */
+.space-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    vertical-align: bottom;
+    border: 1px solid #333; /* 高級感を出すために薄い枠線を追加（不要なら消してOKです） */
+}
+/* 言語切替ボタン */
+.lang-switch {
+    text-align: right;
+    padding: 10px 20px;
+    background: #000;
+}
+
+.lang-switch a {
+    font-size: 11px;
+    color: #888;
+    border: 1px solid #444;
+    padding: 2px 8px;
+}
+
+/* -------------------------------------------------
+   About Page Styles
+------------------------------------------------- */
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-space {
+    background-color: #0a0a0a;
+    padding: 80px 20px;
+}
+
+.space-flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.space-text {
+    flex: 1;
+}
+
+.space-img {
+    flex: 1;
+}
+
+/* -------------------------------------------------
+   Menu (Food) Page Styles
+------------------------------------------------- */
+.menu-area {
+    padding-bottom: 60px;
+}
+
+.menu-box {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border: 1px solid #333;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px dotted #444;
+    padding: 20px 0;
+    transition: 0.3s;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-info h3 {
+    font-size: 18px;
+    color: #c8a96a;
+    margin: 0 0 5px;
+    font-weight: 400;
+}
+
+.menu-info p {
+    font-size: 13px;
+    color: #999;
+    margin: 0;
+}
+
+.price {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    padding-left: 20px;
+    white-space: nowrap;
+}
+
+.menu-note {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0 100px;
+    font-size: 12px;
+    color: #888;
+    line-height: 1.8;
+}
+
+/* -------------------------------------------------
+   Access Page Styles
+------------------------------------------------- */
+.map-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    border: 1px solid #333;
+    filter: grayscale(100%) contrast(1.2) invert(0.9);
+}
+
+.map-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.access-info-section {
+    padding: 80px 20px 120px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-item h3 {
+    font-size: 16px;
+    color: #c8a96a;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+}
+
+.info-item p {
+    font-size: 14px;
+    line-height: 2;
+    margin: 0;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #c8a96a;
+    border-bottom: 1px solid #c8a96a;
+    padding-bottom: 2px;
+}
+
+/* -------------------------------------------------
+   Forms (Booking & Contact) Styles
+------------------------------------------------- */
+.booking-container,
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 100px;
+}
+
+.booking-intro,
+.contact-intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tel-number {
+    font-size: 24px;
+    color: #c8a96a;
+    margin: 20px 0;
+}
+
+.note {
+    font-size: 13px;
+    color: #888;
+}
+
+.reserve-form {
+    background: #1a1a1a;
+    padding: 60px 50px;
+    border: 1px solid #333;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.required {
+    background: #c8a96a;
+    color: #111;
+    font-size: 10px;
+    padding: 2px 6px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #444;
+    color: #fff;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #c8a96a;
+    outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+optgroup {
+    background: #222;
+    color: #c8a96a;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.error-msg {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.submit-btn {
+    background: #c8a96a;
+    color: #111;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.2em;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #e0c284;
+}
+
+.status-msg {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    min-height: 1.5em;
+}
+
+.status-msg.success {
+    color: #c8a96a;
+}
+
+.status-msg.error {
+    color: #ff4d4d;
+}
+
+/* -------------------------------------------------
+   Footer
+------------------------------------------------- */
+.footer-area {
+    padding: 80px 20px 40px;
+    border-top: 1px solid #333;
+    text-align: center;
+    font-size: 13px;
+}
+
+.footer-logo {
+    font-size: 20px;
+    color: #c8a96a;
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+}
+
+/* -------------------------------------------------
+   Responsive (Mobile Settings)
+------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+    /* ナビゲーションの切り替え */
+    .nav-menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* ここで初めてハンバーガーを表示 */
+
+    /* レイアウトの調整 */
+    .concept-area,
+    .food-preview {
+        padding: 80px 20px;
+    }
+
+    .space-flex {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* アクセス情報の調整 */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .map-wrap {
+        padding-top: 75%;
+    }
+
+    /* フォームの調整 */
+    .reserve-form {
+        padding: 40px 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .tel-number {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    /* お料理メニューの調整 */
+    .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .price {
+        padding-left: 0;
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+
+    .menu-box {
+        padding: 20px;
+    }
+}

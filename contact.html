@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 日本料理 深井</title>
+    <link rel="stylesheet" href="css/stl.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&display=swap" rel="stylesheet">
+    <script src="js/menu.js" defer></script>
+</head>
+
+<body>
+
+    <div class="lang-switch">
+        <a href="contact_en.html">English</a>
+    </div>
+
+    <header class="header-area">
+        <header class="header-area">
+            <div class="header-inner">
+                <h1 class="logo">
+                    <a href="index.html">
+                        <!-- テキストを消してロゴ画像を入れる -->
+                        <img src="img/Copilot_20260509_124230.png" alt="深井">
+                    </a>
+
+                </h1>
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="fukai.html">深井について</a></li>
+                        <li><a href="food.html">お料理</a></li>
+                        <li><a href="access.html">アクセス</a></li>
+                        <li><a href="booking.html">ご予約</a></li>
+                        <li><a href="contact.html" class="current">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <nav class="side-menu">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="fukai.html">深井について</a></li>
+                <li><a href="food.html">お料理</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="booking.html">ご予約</a></li>
+                <li><a href="contact.html" class="current">お問い合わせ</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="page-title">
+                <span class="en">Contact</span>
+                <h1>お問い合わせ</h1>
+            </section>
+
+            <section class="contact-section reveal">
+                <div class="contact-container">
+                    <div class="contact-intro">
+                        <p>店舗へのご質問、取材のご依頼などは以下のフォームよりお問い合わせください。<br>
+                            お急ぎの場合は、お電話にてご連絡いただけますようお願い申し上げます。</p>
+                    </div>
+
+                    <form id="contact-form" class="reserve-form">
+                        <div class="form-group">
+                            <label for="c-name">お名前 <span class="required">必須</span></label>
+                            <input type="text" id="c-name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="c-email">メールアドレス <span class="required">必須</span></label>
+                            <input type="email" id="c-email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="c-type">お問い合わせ項目</label>
+                            <select id="c-type" name="type">
+                                <option value="general">店舗へのご質問</option>
+                                <option value="media">取材・広報について</option>
+                                <option value="recruit">採用について</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="c-message">お問い合わせ内容 <span class="required">必須</span></label>
+                            <textarea id="c-message" name="message" rows="8" required></textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">内容を送信する</button>
+                        </div>
+                        <p id="form-status" class="status-msg"></p>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-area">
+            <div class="footer-inner">
+                <p class="footer-logo">深井</p>
+                <small>© 2026 FUKAI All rights reserved.</small>
+            </div>
+        </footer>
+
+</body>
+
+</html>
