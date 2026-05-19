@@ -1,19 +1,15 @@
 @charset "utf-8";
 
-/* -------------------------------------------------
-   Base Settings
-------------------------------------------------- */
 body {
     font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
     background: #111;
-    /* 深みのある黒 */
     color: #eee;
-    /* 目に優しい白 */
     line-height: 2.2;
     letter-spacing: 0.08em;
     margin: 0;
 }
 
+/*スクロールバーの設定*/
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -22,6 +18,7 @@ body {
     background: #333;
 }
 
+/*メニューの設定*/
 a {
     color: inherit;
     text-decoration: none;
@@ -34,9 +31,7 @@ ul {
     padding: 0;
 }
 
-/* -------------------------------------------------
-   Header & Navigation (Z-index 整理済み)
-------------------------------------------------- */
+/*ヘッダーの設定*/
 .header-area {
     background-color: rgba(17, 17, 17, 0.95);
     border-bottom: 1px solid #333;
@@ -44,7 +39,6 @@ ul {
     top: 0;
     width: 100%;
     z-index: 1000;
-    /* ヘッダーの基本の高さ */
 }
 
 .header-inner {
@@ -55,67 +49,46 @@ ul {
     align-items: center;
     padding: 10px 20px;
 }
-/* ロゴエリアの調整 */
+
+/* ロゴの設定 */
 .logo {
     margin: 0;
-    line-height: 0; /* 画像の下にできる隙間を解消 */
+    line-height: 0;
+    opacity: 0.8;
 }
 
 .logo a {
     display: block;
-    padding: 5px 0; /* ロゴの上下に少し余裕を持たせる */
+    padding: 5px 0;
     transition: opacity 0.3s ease;
 }
 
 .logo a:hover {
-    opacity: 0.7; /* ホバー時に少し透明にしてクリックできる感を出します */
+    opacity: 0.5;
 }
 
 .logo img {
-    height: 90px;    /* ロゴの高さを指定（ヘッダーの高さに合わせて調整してください） */
-    width: auto;     /* 横幅は自動計算して比率を維持 */
+    height: 80px;
+    width: auto;
     display: block;
-    /* 白い背景がある画像の場合、背景に馴染ませるために以下を追加しても良いです */
-    /* filter: brightness(1.2); 背景が暗いので、ロゴが黒い場合は白抜きに加工するか検討が必要です */
 }
 
 /* スマホ時のロゴサイズ調整 */
 @media screen and (max-width: 768px) {
     .logo img {
-        height: 90px; /* スマホでは少し小さくしてバランスを取ります */
+        height: 80px;
+        /* スマホでは少し小さくしてバランスを取ります */
     }
 }
 
-.nav-menu ul {
-    display: flex;
-}
-
-.nav-menu li {
-    margin-left: 30px;
-}
-
-.nav-menu a {
-    font-size: 14px;
-    letter-spacing: 0.1em;
-}
-
-.nav-menu a:hover,
-.nav-menu a.current {
-    color: #c8a96a;
-}
-
-/* -------------------------------------------------
-   Hamburger Menu (Z-index 整理済み)
-------------------------------------------------- */
+/*ハンバーガーメニュー(三本線)の設定*/
 .hamburger {
     display: none;
-    /* PCでは非表示 */
     position: relative;
     width: 30px;
-    height: 24px;
+    height: 20px;
     cursor: pointer;
     z-index: 1200;
-    /* サイドメニュー(1100)よりも上！ */
 }
 
 .hamburger span {
@@ -140,7 +113,6 @@ ul {
     top: 22px;
 }
 
-/* active時の三本線アニメーション */
 .hamburger.active span:nth-child(1) {
     transform: translateY(11px) rotate(-45deg);
 }
@@ -153,18 +125,34 @@ ul {
     transform: translateY(-11px) rotate(45deg);
 }
 
-/* -------------------------------------------------
-   Side Menu (Mobile) (Z-index 整理済み)
-------------------------------------------------- */
+
+.nav-menu ul {
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 30px;
+}
+
+.nav-menu a {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.nav-menu a:hover,
+.nav-menu a.current {
+    color: #c8a96a;
+}
+
+/*ハンバーガーメニュー（中のサイドメニュー）の設定*/
 .side-menu {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
+    width: 55%;
     height: 100vh;
     background: rgba(10, 10, 10, 0.98);
     z-index: 1100;
-    /* ヘッダー(1000)より上で、ハンバーガー(1200)より下！ */
     transition: right 0.4s ease;
     padding-top: 100px;
     padding-left: 40px;
@@ -232,11 +220,10 @@ ul {
 ------------------------------------------------- */
 .main-visual {
     width: 100%;
-    height: 100vh; /* 画面いっぱいに表示する場合 */
-    /* 背景画像の設定 */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 5)), 
-                url('../img/Copilot_20260509_144506.png') no-repeat center center / cover;
-    
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 5)),
+        url('../img/Copilot_20260509_144506.png') no-repeat center center / cover;
+
     /* 文字を中央に配置するための設定 */
     display: flex;
     align-items: center;
@@ -245,8 +232,10 @@ ul {
 }
 
 .mv-text {
-    text-align: left; /* 左揃えの指定を維持 */
-    z-index: 1;      /* 画像より前に出す */
+    text-align: left;
+    /* 左揃えの指定を維持 */
+    z-index: 1;
+    /* 画像より前に出す */
 }
 
 .catch {
@@ -254,7 +243,8 @@ ul {
     font-size: 2.5rem;
     line-height: 1.8;
     letter-spacing: 0.1em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字の視認性をさらに上げる影 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* 文字の視認性をさらに上げる影 */
 }
 
 .catch {
@@ -328,31 +318,39 @@ ul {
     width: 100%;
     height: 400px;
     margin-bottom: 15px;
-    overflow: hidden; /* 枠からはみ出した画像を隠す */
-    background: #111; /* 画像が読み込まれる前の背景色 */
+    overflow: hidden;
+    /* 枠からはみ出した画像を隠す */
+    background: #111;
+    /* 画像が読み込まれる前の背景色 */
 }
 
 /* 以下の画像用の設定を新しく追加する */
 .img-placeholder img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 画像の比率を保ったまま、枠いっぱいにトリミングする魔法のコード */
-    vertical-align: bottom; /* 画像の下にできる不要な隙間を消す */
-    transition: transform 0.5s ease; /* （おまけ）後でホバー時の拡大などを入れたくなった時用 */
+    object-fit: cover;
+    /* 画像の比率を保ったまま、枠いっぱいにトリミングする魔法のコード */
+    vertical-align: bottom;
+    /* 画像の下にできる不要な隙間を消す */
+    transition: transform 0.5s ease;
+    /* （おまけ）後でホバー時の拡大などを入れたくなった時用 */
 }
 
 .food-item p {
     text-align: center;
     font-size: 14px;
 }
+
 /* 「深井について」の店舗画像用設定 */
 .space-img img {
     width: 100%;
     height: auto;
     object-fit: cover;
     vertical-align: bottom;
-    border: 1px solid #333; /* 高級感を出すために薄い枠線を追加（不要なら消してOKです） */
+    border: 1px solid #333;
+    /* 高級感を出すために薄い枠線を追加（不要なら消してOKです） */
 }
+
 /* 言語切替ボタン */
 .lang-switch {
     text-align: right;
